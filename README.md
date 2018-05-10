@@ -1,4 +1,4 @@
 # ASAP
+Solar PV Siting Survey for Anchorage, Alaska
 
-Our project is to go through .las file of Anchorage. Filter the building and point the qualified rooftop for solar panel over 1000 kwh.
-Google Earth Pro will be used for results display
+The project will determine the technical siting potential for commercial-scale solar photovoltaic (PV) installations of 1,000 kW (AC) or larger throughout Anchorage, within the built environment. The methodology can build upon the Clean Coalition’s work conducting similar Solar Siting Surveys for other entities. The project will identify lower cost and higher value renewable resource opportunities reflecting characteristics of all available sites in relation to existing loads and electric grid infrastructure. Outcomes will guide the development of cost-effective local solar generation within Anchorage.
