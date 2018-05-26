@@ -12,13 +12,13 @@ The project will determine the technical siting potential for commercial-scale s
 6. Buildings (.gdb)
 7. Arcgis license offered by instructor
 
-## Procedures
-1. Select an area for case study 
+## Plan
+1. Select an area for case study, details are shown in the "Case Study" section
 2. Rasterize the region and obtain information via different tools on ArcMap
+3. Case study has to be comprehensive enough so the exported models and their corresponding python scripts can process data from other similar regions. For example, model created in this project can also be used in San Francisco or other regions with different latitude and longitude.
 
-
-## Study CaseS
-The study case is selected as one area where buildings, some parking lots and empty grounds exist in a well sorted pattern. The selected las file name is 1659_2614.las. LAS file contains raw LIDAR point cloud data including x, y and z values. By creating a new "LAS Dataset" it is possible to load the data into Arcmap
+## Case Study
+The case region, where buildings, some parking lots and empty grounds exist in a well sorted pattern, was selected. The selected las file name is 1659_2614.las. LAS file contains raw LIDAR point cloud data including x, y and z values. By creating a new "LAS Dataset" it is possible to load the data into Arcmap. Creating masks that could trim unnecessary and unwanted data points. Aspect, slope, solar radiation and human sorting are five masks necessary to create. 
 
 
 ## Tips
