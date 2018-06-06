@@ -1,6 +1,6 @@
 The purpose of this file is to go through concepts and details of packages used in the model building process.
 
-### Packages will be used:
+Packages will be used:
 1. Create LAS Dataset (Data Management)
 2. from LAS Dataset to Rasters
 3. Classify LAS Buildings (unnecessary if the filter option of las dataset already includes check boxes of buildings and last return)
@@ -15,7 +15,7 @@ The purpose of this file is to go through concepts and details of packages used 
 12. Aggregate Points
 13. Zonal Statistics 
 
-### Details in some significant pakages 
+Details in some significant pakages 
 1. Aspect
 Input: 
 DEM or other rasters
