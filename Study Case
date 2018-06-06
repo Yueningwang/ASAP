@@ -1,1 +1,47 @@
+The purpose of this file is to go through concepts and details of packages used in the model building process.
+
+### Packages will be used:
+1. Create LAS Dataset (Data Management)
+2. from LAS Dataset to Rasters
+3. Classify LAS Buildings (unnecessary if the filter option of las dataset already includes check boxes of buildings and last return)
+4. Slope
+5. Aspect
+6. Hillshade
+7. Extract by Mask
+8. Raster Calculator
+9. Clip
+10. Solar Irradiation Analyst
+11. Raster to Points
+12. Aggregate Points
+13. Zonal Statistics 
+
+### Details in some significant pakages 
+1. Aspect
+Input: 
+DEM or other rasters
+Definition: 
+Aspect tool is used to calculate the direction of surface, and the given result will be shown in degrees and labels 
+(EAST, WEST, SOUTH, NORTH, and etc.) depending on how many categories the user classifies them. According to Esri Arcgis website, 
+
+     "Aspect identifies the downslope direction of the maximum rate of change in value from each cell to its neighbors. 
+      Aspect can be thought of as the slope direction. The values of the output raster will be the compass direction of the aspect."
+
+
+2. Slope
+Input:
+
+Definition:
+
+
+3. Solar Irradiation Analyst
+Input:
+
+Definition:
+
+
+4. Aggregate Points
+Input:
+
+Definition:
+
 
