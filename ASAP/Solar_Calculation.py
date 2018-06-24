@@ -33,3 +33,30 @@ def project_raster(dem, raster):
     Project_raster = Times('XY_dem', "0.3048")  # Covert unit of z value from feet to meter
     Project_raster.save(raster)
     return
+
+
+def create_mask(raster, mask):
+    """This function creates a mask to filter unsuitable location to install solar panels.
+    The input should be a raster and name of output mask raster"""
+    arcpy.Aspect_3d(raster, 'aspect')  # filter aspect
+    # filter south facing or horizontal aspect. Flat, 112.5 <= aspect <= 247.5, set value to 1, others to None
+    filter_aspect = Con((Raster('aspect') == -1) | (Raster('aspect') >= 112.5) & (Raster('aspect') <= 247.5), 1, '')
+    filter_aspect.save("filtered_aspect.tif")
+    arcpy.Slope_3d(raster, 'slope', "DEGREE", 1)  # filter slope
+    # filter slope degree <= 35 to 1, others to None
+    filter_slope = Con(Raster('slope') <= 35, 1, '')
+    filter_slope.save("filtered_slope.tif")
+    result = Times("filtered_aspect.tif", "filtered_slope.tif")  # Combine slope and aspect
+    result.save(mask)
+    return
+
+
+def solar_radiation(mask, raster, solar, polygon):
+    """This function is used to calculate solar radiation of filtered location.
+    The input should be mask raster, DEM raster, polygon shape file and the name of output solar raster"""
+    result = Times(mask, raster)
+    result.save("result")
+    polygon_raster = ExtractByMask("result", polygon)  # extract by polygon of buildings or parking lots
+    polygon_raster.save("poly_raster")
+    solar_result = AreaSolarRadiation("poly_raster", '', '', TimeWholeYear(2018))  # calculate solar radiation
+    solar_result.save(solar)
