@@ -23,18 +23,16 @@ def las_to_raster(las, dem):
     return
 
 
-# need to test
 def project_raster(dem, raster):
     """This function is used to convert unit of coordination system from feet to meter.
     The input should be a raster and the name of output raster file"""
-    out_coordinate_system = arcpy.SpatialReference('GCS_WGS_1984')
-    ProjectRaster_management(dem, 'XY_dem', out_coordinate_system, "BILINEAR", '#', "NAD_1983_To_WGS_1984"
-                        '#', '#')  # Project XY coordination system
-    Project_raster = Times('XY_dem', "0.3048")  # Covert unit of z value from feet to meter
-    Project_raster.save(raster)
+    out_coordinate_system = arcpy.SpatialReference(26934)
+    arcpy.ProjectRaster_management(dem, 'XY_dem', out_coordinate_system, "BILINEAR")  # Project XY coordination system
+    pro_raster = Times('XY_dem', 0.3048)  # Covert unit of z value from feet to meter
+    pro_raster.save(raster)
     return
 
-
+# need to test
 def create_mask(raster, mask):
     """This function creates a mask to filter unsuitable location to install solar panels.
     The input should be a raster and name of output mask raster"""
