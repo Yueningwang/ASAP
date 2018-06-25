@@ -58,5 +58,9 @@ def solar_radiation(mask, raster, solar, polygon):
     result.save("result")
     polygon_raster = ExtractByMask("result", polygon)  # extract by polygon of buildings or parking lots
     polygon_raster.save("poly_raster")
-    solar_result = AreaSolarRadiation("poly_raster", '', '', TimeWholeYear(2018))  # calculate solar radiation
-    solar_result.save(solar)
+    solar_radiation = AreaSolarRadiation("poly_raster", time_configuration=TimeWholeYear(2018), 
+                                         out_direct_duration_raster='solar_dur')  # calculate solar radiation
+    solar_radiation.save("solar_rad")  # unit WH/m2
+    solar_result = Times('solar_dur', "solar_rad")
+    solar_result.save(solar)  # unit W/m2
+    return
