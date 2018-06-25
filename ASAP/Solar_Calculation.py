@@ -27,8 +27,8 @@ def project_raster(dem, raster):
     """This function is used to convert unit of coordination system from feet to meter.
     The input should be a raster and the name of output raster file"""
     out_coordinate_system = arcpy.SpatialReference(26934)
-    arcpy.ProjectRaster_management(dem, 'XY_dem', out_coordinate_system, "BILINEAR")  # Project XY coordination system
-    pro_raster = Times('XY_dem', 0.3048)  # Covert unit of z value from feet to meter
+    arcpy.ProjectRaster_management(dem, 'XY_dem', out_coordinate_system, "BILINEAR", 1) #Project XY coordination system
+    pro_raster = Times('XY_dem', 0.3048) #Covert unit of z value from feet to meter
     pro_raster.save(raster)
     return
 
@@ -56,9 +56,9 @@ def solar_radiation(mask, raster, solar, polygon):
     result.save("result")
     polygon_raster = ExtractByMask("result", polygon)  # extract by polygon of buildings or parking lots
     polygon_raster.save("poly_raster")
-    solar_radiation = AreaSolarRadiation("poly_raster", time_configuration=TimeWholeYear(2018), 
-                                         out_direct_duration_raster='solar_dur')  # calculate solar radiation
-    solar_radiation.save("solar_rad")  # unit WH/m2
+    solar_rad = AreaSolarRadiation("poly_raster", time_configuration=TimeWholeYear(2018),
+                                   out_direct_duration_raster='solar_dur')  # calculate solar radiation
+    solar_rad.save("solar_rad")  # unit WH/m2
     solar_result = Divide('solar_rad', "solar_dur")
     solar_result.save(solar)  # unit W/m2
     return
