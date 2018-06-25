@@ -61,6 +61,6 @@ def solar_radiation(mask, raster, solar, polygon):
     solar_radiation = AreaSolarRadiation("poly_raster", time_configuration=TimeWholeYear(2018), 
                                          out_direct_duration_raster='solar_dur')  # calculate solar radiation
     solar_radiation.save("solar_rad")  # unit WH/m2
-    solar_result = Times('solar_dur', "solar_rad")
+    solar_result = Divide('solar_rad', "solar_dur")
     solar_result.save(solar)  # unit W/m2
     return
