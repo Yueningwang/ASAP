@@ -11,7 +11,7 @@ def arc_beg(work_path):
     arcpy.env.overwriteOutput = True
     arcpy.CheckOutExtension("3D")  # load 3D Analyst tool
     arcpy.CheckOutExtension("Spatial")  # load Spatial Analyst tool
-    print("The workspace has set to:"+ work_path)
+    print("The workspace has set to: " + work_path)
     return
 
 
@@ -30,8 +30,9 @@ def project_raster(dem):
     The input should be a raster and the output will be projected raster file"""
     raster = 'projected_DEM'
     out_coordinate_system = arcpy.SpatialReference(26934)
-    arcpy.ProjectRaster_management(dem, 'XY_dem', out_coordinate_system, "BILINEAR") #Project XY coordination system
-    pro_raster = Times('XY_dem', 0.3048) #Covert unit of z value from feet to meter
+    # Project XY coordination system
+    arcpy.ProjectRaster_management(dem, 'XY_dem', out_coordinate_system, "BILINEAR", 1)
+    pro_raster = Times('XY_dem', 0.3048)  # Covert unit of z value from feet to meter
     pro_raster.save(raster)
     return raster
 
