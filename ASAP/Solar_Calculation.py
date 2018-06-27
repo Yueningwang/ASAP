@@ -31,7 +31,7 @@ def project_raster(dem):
     raster = 'projected_DEM'
     out_coordinate_system = arcpy.SpatialReference(26934)
     # Project XY coordination system
-    arcpy.ProjectRaster_management(dem, 'XY_dem', out_coordinate_system, "BILINEAR", 1)
+    arcpy.ProjectRaster_management(dem, 'XY_dem', out_coordinate_system, "BILINEAR", '1')
     pro_raster = Times('XY_dem', 0.3048)  # Covert unit of z value from feet to meter
     pro_raster.save(raster)
     return raster
