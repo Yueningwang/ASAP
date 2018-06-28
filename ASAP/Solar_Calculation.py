@@ -76,21 +76,22 @@ def solar_radiation(mask, raster, polygon):
 def join_shape(solar_tab, building, address):
     """This function is used to join the solar energy table with building and address shape files
     The input should be table, building and address shape files, and the output should be joined shape file"""
-    sol_build = 'solar_build'
-    build_addr = 'addr_build'
+    sol_build = 'solar_build.shp'
+    build_addr = 'addr_build.shp'
     arcpy.AddIndex_management(solar_tab, 'FID')  # Index.
     # join table to building
     arcpy.MakeFeatureLayer_management(building, 'build_layer')
     arcpy.AddJoin_management('build_layer', 'FID', solar_tab, 'FID', 'KEEP_COMMON')
-    arcpy.CopyFeatures_management('build_layer', 'solar_build')
+    arcpy.CopyFeatures_management('build_layer', sol_build)
     # join address to building
-    arcpy.SpatialJoin_analysis('solar_build', address, build_addr,
+    arcpy.SpatialJoin_analysis(sol_build, address, build_addr,
                            'JOIN_ONE_TO_ONE', 'KEEP_COMMON', field_mappings(sol_build, address), 'CLOSEST')
     return build_addr
 
 
 def field_mappings(sol_build, address):
     """This function creates field mappings for other function"""
+    arcpy.env.qualifiedFieldNames = False
     fms = arcpy.FieldMappings()
     # create field maps
     f_st_add = arcpy.FieldMap()
@@ -123,7 +124,7 @@ def generate_result(shape):
     """This function converts shape file into excel and kml files.
     The input should be shape file, and the output will be excel and kml files"""
     table = 'fin_result.xls'
-    kml = 'fin_result.kml'
+    kml = 'fin_result.kmz'
     arcpy.TableToExcel_conversion(shape, table)
     arcpy.MakeFeatureLayer_management(shape, 'layer')
     arcpy.LayerToKML_conversion('layer', kml)
@@ -133,7 +134,7 @@ def generate_result(shape):
 def main(work_path, las, building, address):
     """This is the main function of the module.
     The input should be the path all files store, .las files or folder, building shapefile, and address shape file.
-    The output will be .xls file and .kml file""""
+    The output will be .xls file and .kml file"""
     arc_beg(work_path)
     dem = las_to_raster(las)
     raster = project_raster(dem)
