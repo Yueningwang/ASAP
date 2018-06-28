@@ -56,15 +56,18 @@ def create_mask(raster):
 
 def solar_radiation(mask, raster, polygon):
     """This function is used to calculate solar radiation of filtered location.
-    The input should be mask raster, DEM raster, polygon shape file and the output will be solar raster"""
+    The input should be mask raster, DEM raster, polygon shape file and the output will be solar energy table"""
     solar = 'solar_raster'
+    solar_tab = 'solar_energy'
     result = Times(mask, raster)
     result.save("result")
     polygon_raster = ExtractByMask("result", polygon)  # extract by polygon of buildings or parking lots
     polygon_raster.save("poly_raster")
-    sol_radiation = AreaSolarRadiation("poly_raster", time_configuration=TimeWholeYear(2018), 
-                                       out_direct_duration_raster='solar_dur')  # calculate solar radiation
+    # calculate solar radiation
+    sol_radiation = AreaSolarRadiation("poly_raster", time_configuration=TimeWholeYear(2018),
+                                       out_direct_duration_raster='solar_dur')
     sol_radiation.save("solar_rad")  # unit WH/m2
     solar_result = Divide('solar_rad', "solar_dur")
     solar_result.save(solar)  # unit W/m2
-    return solar
+    ZonalStatisticsAsTable(polygon, 'FID', solar, solar_tab, "DATA", "SUM")  # generate solar energy table
+    return solar_tab
