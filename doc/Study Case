@@ -2,8 +2,9 @@ The purpose of this file is to go through concepts and details of packages used 
 
 Packages will be used:
 1. Create LAS Dataset (Data Management)
-2. from LAS Dataset to Rasters
-3. Classify LAS Buildings (unnecessary if the filter option of las dataset already includes check boxes of buildings and last return)
+2. from LAS Dataset to Raster
+3. Classify LAS Buildings (unnecessary if the filter option of las dataset already includes check boxes of buildings
+and last return)
 4. Slope
 5. Aspect
 6. Hillshade
@@ -15,33 +16,30 @@ Packages will be used:
 12. Aggregate Points
 13. Zonal Statistics 
 
-Details in some significant pakages 
+Details in some significant packages
 1. Aspect
-Input: 
-DEM or other rasters
-Definition: 
-Aspect tool is used to calculate the direction of surface, and the given result will be shown in degrees and labels 
-(EAST, WEST, SOUTH, NORTH, and etc.) depending on how many categories the user classifies them. According to Esri Arcgis website, 
+Input: DEM
 
-     "Aspect identifies the downslope direction of the maximum rate of change in value from each cell to its neighbors. 
-      Aspect can be thought of as the slope direction. The values of the output raster will be the compass direction of the aspect."
+Methods and Approach:
+The aspect should be south facing or horizontal, because Anchorage is located in the northern hemisphere, solar panels
+located on south-facing slopes will have a higher solar power output than those located on north-facing slopes. So we
+choose Flat, 112.5 <= aspect <= 247.5, set value to 1, others to None
 
+Output: Aspect Raster
 
 2. Slope
-Input:
+Input:DEM
 
-Definition:
+Methods and Approach:
+The slope should be less than 35 degrees. In this angel, it will be easy to install solar panels. So with slope degree
+<= 35 to 1, others to None
 
+Output: Slope Raster
 
 3. Solar Irradiation Analyst
-Input:
+Input: Aspect and Slope Raster
 
-Definition:
+Methods and Approach:
+We use the solar radiation tool in Arcgis to calculate solar radiation, which use hemispherical viewshed algorithm.
 
-
-4. Aggregate Points
-Input:
-
-Definition:
-
-
+Output: Solar radiation Raster
