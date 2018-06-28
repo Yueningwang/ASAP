@@ -11,9 +11,6 @@ setup(
     license='MIT',
     keywords='solar energy',
     packages=find_packages(exclude=['tests']),
-    install_requires=[
-        'python_version == 2.7',
-    ],
     project_urls={
         'Bug Reports': 'https://github.com/Yueningwang/ASAP/issues',
         'Source': 'https://github.com/Yueningwang/ASAP',
