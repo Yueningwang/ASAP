@@ -8,7 +8,18 @@ higher value renewable resource opportunities reflecting characteristics of all 
 loads and electric grid infrastructure. Outcomes will guide the development of cost-effective local solar generation
 within Anchorage.
 
-## Provided Materials
+## Getting Started
+
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+
+1. Select an area for case study, details are shown in the "Case Study" section
+2. Rasterize the region and obtain information via different tools on ArcMap
+3. Case study has to be comprehensive enough so the exported models and their corresponding python scripts can process
+data from other similar regions. For example, model created in this project can also be used in San Francisco or other
+regions with different latitude and longitude.
+
+
+The followings are materials provided by Alaska Anchorage University:
 1. EBCE case study (.kml)
 2. EBCE project summary (.xlsx)
 3. LIDAR data collected in 2015 (.las)
@@ -16,12 +27,6 @@ within Anchorage.
 5. Address Point (.shp)
 6. Arcgis license offered by instructor
 
-## Plan
-1. Select an area for case study, details are shown in the "Case Study" section
-2. Rasterize the region and obtain information via different tools on ArcMap
-3. Case study has to be comprehensive enough so the exported models and their corresponding python scripts can process
-data from other similar regions. For example, model created in this project can also be used in San Francisco or other
-regions with different latitude and longitude.
 
 ## Case Study
 The case region, where buildings, some parking lots and empty grounds exist in a well sorted pattern, was selected.
@@ -34,6 +39,88 @@ zonal statistics feature can be used for data processing. Also, since masks are 
 35 degrees, and aspect that does not face south, most of pipeline system, HVAC, ventilation and attics on the building
 will not be included in the masked solar irradiation raster, thus the mean value calculated is relatively accurate. The
 shape file eventually converts into .kml file, which can display in Google Earth Pro and Google Map.
+
+
+### Prerequisites
+
+What things you need to install the software and how to install them
+
+```
+Give examples
+```
+
+### Installing
+
+A step by step series of examples that tell you how to get a development env running
+
+Say what the step will be
+
+```
+Give the example
+```
+
+And repeat
+
+```
+until finished
+```
+
+End with an example of getting some data out of the system or using it for a little demo
+
+## Running the tests
+
+Explain how to run the automated tests for this system
+
+### Break down into end to end tests
+
+Explain what these tests test and why
+
+```
+Give an example
+```
+
+### And coding style tests
+
+Explain what these tests test and why
+
+```
+Give an example
+```
+
+## Deployment
+
+Add additional notes about how to deploy this on a live system
+
+## Built With
+
+* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
+* [Maven](https://maven.apache.org/) - Dependency Management
+* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
+
+## Contributing
+
+Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
+
+## Versioning
+
+We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags). 
+
+## Authors
+
+* **Jingtian Zhang** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
+
+See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+
+## Acknowledgments
+
+* Hat tip to anyone whose code was used
+* Inspiration
+* etc
+
 
 ## Tips
 1. This program is based on LIDAR data and corresponding building polygons extraction 
