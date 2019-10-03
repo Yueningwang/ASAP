@@ -1,5 +1,4 @@
-# ASAP
-Solar PV Siting Survey for Anchorage, Alaska
+# Project ASAP: Solar PV Siting Survey for Anchorage, Alaska
 
 The project will determine the technical siting potential for commercial-scale solar photovoltaic (PV) installations of
 1,000 kW (AC) or larger throughout Anchorage, within the built environment. The methodology can build upon the Clean
